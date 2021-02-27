@@ -40,7 +40,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/ac"
-                android:textColor="@color/anotherColor"
+                android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
 
             <ImageButton
@@ -60,7 +60,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="%"
-                android:textColor="@color/anotherColor"
+                android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
 
             <Button
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="/"
-                android:textColor="@color/anotherColor" />
+                android:textColor="@color/orange" />
         </TableRow>
 
         <TableRow
@@ -116,7 +116,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/multiplication"
-                android:textColor="@color/anotherColor" />
+                android:textColor="@color/orange" />
         </TableRow>
 
         <TableRow
@@ -161,7 +161,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/minus"
-                android:textColor="@color/anotherColor"
+                android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
         </TableRow>
 
@@ -207,20 +207,20 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="+"
-                android:textColor="@color/anotherColor"
+                android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:gravity="right">
 
             <Button
                 android:id="@+id/button0"
-                android:layout_width="189dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_button_number"
-                android:layout_gravity="left"
-                android:layout_span="2"
+                android:layout_weight="8"
                 android:background="@android:color/transparent"
                 android:text="@string/button0"
                 android:textColor="@color/black"
@@ -228,8 +228,9 @@
 
             <Button
                 android:id="@+id/buttonPt"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_button_number"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/buttonPt"
                 android:textColor="@color/black"
@@ -237,13 +238,14 @@
 
             <Button
                 android:id="@+id/buttonEqually"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_button_number"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="@string/buttonEqually"
-                android:textColor="@color/anotherColor" />
-
-
+                android:text="@string/stringEqually"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/key_text_size" />
         </TableRow>
+        @+id/buttonEqually
     </TableLayout>
 </LinearLayout>
