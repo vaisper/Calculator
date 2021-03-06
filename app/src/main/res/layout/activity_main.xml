@@ -14,13 +14,6 @@
         android:text=""
         android:textSize="@dimen/key_text_size" />
 
-    <EditText
-        android:id="@+id/etMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:focusable="false"
-        android:cursorVisible="false"/>
 
 
     <TableLayout
@@ -28,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        >
+        android:gravity="bottom">
 
         <TableRow
             android:layout_width="match_parent"
@@ -42,20 +35,19 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
                 android:text="@string/ac"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/buttonDel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOperationClick"
                 android:src="@drawable/ic_baseline_delete"
-                android:text="@string/button8"
+                android:text="@string/buttonDel"
+                android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
 
             <Button
@@ -64,8 +56,8 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
-                android:text="@string/buttonPercent"
+
+                android:text="@string/buttonNegative"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
 
@@ -75,7 +67,7 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="@string/buttonDel"
+                android:text="@string/buttonDivision"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
         </TableRow>
@@ -92,7 +84,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button7"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -103,7 +94,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button8"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -114,7 +104,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button9"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -125,7 +114,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
                 android:text="@string/multiplication"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
@@ -143,7 +131,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button4"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -154,7 +141,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button5"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -165,7 +151,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button6"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -176,7 +161,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
                 android:text="@string/minus"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
@@ -193,7 +177,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button1"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -204,7 +187,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button2"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -215,7 +197,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button3"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -226,8 +207,7 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
-                android:text="+"
+                android:text="@string/plus"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />
         </TableRow>
@@ -243,7 +223,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="8"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/button0"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -254,7 +233,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onNumberClick"
                 android:text="@string/buttonPt"
                 android:textColor="@color/black"
                 android:textSize="@dimen/key_text_size" />
@@ -265,7 +243,6 @@
                 android:layout_height="@dimen/size_button_number"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:onClick="onOpertionClick"
                 android:text="@string/stringEqually"
                 android:textColor="@color/orange"
                 android:textSize="@dimen/key_text_size" />

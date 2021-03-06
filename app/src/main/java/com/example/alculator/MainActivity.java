@@ -1,152 +1,120 @@
 package com.example.alculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-    private static Button btnMinus;
-    private static Button btnPlus;
-    private static Button btnDiv;
-    private static Button btnEquals;
-    private static Button btnMultiplication;
-    private static Button btnAC;
-    private static Button btnPT;
-    private static ImageButton btnDel;
-    private static Button btnPerсent;
-    private static TextView tvResult;
-    private static EditText etNumber;
-    private static Double operand = null;
-    private static String lastOperation = "=";
+import java.util.ArrayList;
+import java.util.HashSet;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private TextView mResultView;
+    private CalculusState mCalculusState;
+    private HashSet<String> mOperandParts;
+    private HashSet<String> mOperations;
+    private static final String CALCULUS_STATE_NAMESPACE = "CALCULUS_STATE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
+        mResultView = findViewById(R.id.tvMain);
+        mCalculusState = new CalculusState(mResultView);
+        initializeKeyHashes();
+        setListenerForButtons();
     }
 
-    private void init() {
-        btnMinus = findViewById(R.id.minus);
-        btnDiv = findViewById(R.id.division);
-        btnPlus = findViewById(R.id.plus);
-        btnEquals = findViewById(R.id.buttonEqually);
-        btnMultiplication = findViewById(R.id.multiply);
-        btnPerсent = findViewById(R.id.buttonPercent);
-        btnPT = findViewById(R.id.buttonPt);
-        btnAC = findViewById(R.id.buttonAC);
-        btnDel = findViewById(R.id.buttonDel);
-        tvResult = findViewById(R.id.tvMain);
-        etNumber = findViewById(R.id.etMain);
-    }
-
-    // обработка нажатия на числовую кнопку
-    public void onNumberClick(View view){
-
-        Button button = (Button)view;
-        etNumber.append(button.getText());
-
-        if(lastOperation.equals("=") && operand!=null){
-            operand = null;
-        }
-    }
-
-    // обработка нажатия на кнопку операции
-    public void onOperationClick(View view){
-
-        Button button = (Button)view;
-        String op = null;
-        if (button.getText().toString().equals("x")) {
-            op = "*";
-        }
-
-        if (button.getText().toString().equals("/")) {
-            op = "/";
-        }
-
-        if (button.getText().toString().equals("+")) {
-            op = "+";
-        }
-
-        if (button.getText().toString().equals("-")) {
-            op = "-";
-        }
-
-        if (button.getText().toString().equals("=")) {
-            op = "=";
-        }
-        String number = etNumber.getText().toString();
-        // если введенно что-нибудь
-        if(number.length()>0){
-            number = number.replace(',', '.');
-            try{
-                performOperation(Double.valueOf(number), op);
-            }catch (NumberFormatException ex){
-                tvResult.setText("");
-            }
-        }
-        lastOperation = op;
-        tvResult.setText(lastOperation);
-    }
-
-    private void performOperation(Double number, String operation){
-
-        // если операнд ранее не был установлен (при вводе самой первой операции)
-        if(operand ==null){
-            operand = number;
-        }
-        else{
-            if(lastOperation.equals("=")){
-                lastOperation = operation;
-            }
-            switch(lastOperation){
-                case "=":
-                    operand =number;
-                    break;
-                case "/":
-                    if(number==0){
-                        operand =0.0;
-                    }
-                    else{
-                        operand /=number;
-                    }
-                    break;
-                case "*":
-                    operand *=number;
-                    break;
-                case "+":
-                    operand +=number;
-                    break;
-                case "-":
-                    operand -=number;
-                    break;
-            }
-        }
-        tvResult.setText(operand.toString().replace('.', ','));
-        tvResult.setText("");
-    }
-
-    // сохранение состояния
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("OPERATION", lastOperation);
-        if(operand!=null)
-            outState.putDouble("OPERAND", operand);
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelable(CALCULUS_STATE_NAMESPACE, mCalculusState);
         super.onSaveInstanceState(outState);
     }
 
-    // получение ранее сохраненного состояния
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        mCalculusState = savedInstanceState.getParcelable(CALCULUS_STATE_NAMESPACE);
+        mCalculusState.setDisplay(mResultView);
         super.onRestoreInstanceState(savedInstanceState);
-        lastOperation = savedInstanceState.getString("OPERATION");
-        operand= savedInstanceState.getDouble("OPERAND");
-        tvResult.setText(operand.toString()+lastOperation);
+
+    }
+
+    private void initializeKeyHashes() {
+        mOperandParts = new HashSet<String>() {{
+            add(getResources().getString(R.string.button0));
+            add(getResources().getString(R.string.button1));
+            add(getResources().getString(R.string.button2));
+            add(getResources().getString(R.string.button3));
+            add(getResources().getString(R.string.button4));
+            add(getResources().getString(R.string.button5));
+            add(getResources().getString(R.string.button6));
+            add(getResources().getString(R.string.button7));
+            add(getResources().getString(R.string.button8));
+            add(getResources().getString(R.string.button9));
+            add(getResources().getString(R.string.buttonPt));
+        }};
+
+        mOperations = new HashSet<String>() {{
+            add(getResources().getString(R.string.buttonDivision));
+            add(getResources().getString(R.string.multiplication));
+            add(getResources().getString(R.string.plus));
+            add(getResources().getString(R.string.minus));
+        }};
+    }
+
+
+    private void setListenerForButtons() {
+        ViewGroup rootView = findViewById(android.R.id.content);
+        ArrayList<Button> buttons = buttonsOfViewGroupRecursevly(rootView);
+        for (Button key : buttons) {
+            key.setOnClickListener(this);
+        }
+    }
+
+    private ArrayList<Button> buttonsOfViewGroupRecursevly(ViewGroup view) {
+        ArrayList<Button> buttons = new ArrayList<>();
+        processViewGroup(view, buttons);
+        return buttons;
+    }
+
+    private void processViewGroup(ViewGroup view, ArrayList<Button> buttons) {
+        for (int i = 0; i < view.getChildCount(); i++) {
+            View element = view.getChildAt(i);
+            if (element instanceof Button) {
+                buttons.add((Button) element);
+            } else if (element instanceof ViewGroup) {
+                processViewGroup((ViewGroup) element, buttons);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (!(v instanceof Button)) {
+            throw new RuntimeException("Listener on click was set up to wrong type view. It should be Button.");
+        }
+        String pressedValue = ((Button) v).getText().toString();
+        if (mOperandParts.contains(pressedValue)) {
+            mCalculusState.appendDigit(pressedValue);
+        } else if (pressedValue.equals(getResources().getString(R.string.buttonNegative))) {
+            mCalculusState.changePosNeg();
+        } else if (mOperations.contains(pressedValue)) {
+            mCalculusState.determineOperation(pressedValue);
+        } else if (pressedValue.equals(getResources().getString(R.string.stringEqually))) {
+            mCalculusState.execute();
+        } else if (pressedValue.equals(getResources().getString(R.string.ac))) {
+            mCalculusState.clearStatemenet();
+        } else if (pressedValue.equals(getResources().getString(R.string.buttonDel))) {
+            mCalculusState.clearLastDigit();
+//        } else if (pressedValue.equals(getResources().getString(R.string.clear_number))) {
+//            mCalculusState.clearCurrentOperand();
+        } else {
+            throw new UnsupportedOperationException();
+        }
+
     }
 }
