@@ -12,8 +12,12 @@
     <string name="button0">0</string>
     <string name="buttonPt">.</string>
     <string name="buttonEqually">=</string>
-    <string name="multiplication">x</string>
+    <string name="multiplication">*</string>
     <string name="minus">-</string>
     <string name="ac">AC</string>
     <string name="stringEqually">=</string>
+    <string name="buttonNegative">±</string>
+    <string name="buttonDivision">/</string>
+    <string name="plus">+</string>
+    <string name="buttonDel">⌫</string>
 </resources>

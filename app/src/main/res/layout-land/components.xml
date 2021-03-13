@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="@dimen/key_text_size_horizontal" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/ac"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/buttonDel"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/buttonNegative"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/buttonDivision"
+                android:textSize="@dimen/key_text_size_horizontal" />
+        </TableRow>
+
+        <TableRow>
+
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button7"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button8"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button9"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/multiplication"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button4"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button5"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button6"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/minus"
+                android:textSize="@dimen/key_text_size_horizontal" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button1"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button2"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button3"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/plus"
+                android:textSize="@dimen/key_text_size_horizontal" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/button0"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/NumberButton"
+                android:text="@string/buttonPt"
+                android:textSize="@dimen/key_text_size_horizontal" />
+
+            <Button
+                style="@style/OperationButton"
+                android:text="@string/stringEqually"
+                android:textSize="@dimen/key_text_size_horizontal" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
