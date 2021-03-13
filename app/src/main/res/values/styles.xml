@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CalculuteKeyButton" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="OperationButton" parent="CalculuteKeyButton">
+        <item name="android:textColor"> @color/orange</item>
+    </style>
+    <style name="NumberButton" parent="CalculuteKeyButton">
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
