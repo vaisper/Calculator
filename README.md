@@ -1,2 +1,2 @@
 # Calculator
-it`s my fiest serious programm on android
+it`s my first programm on android
