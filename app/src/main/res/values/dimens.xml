@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="key_text_size">40sp</dimen>
-    <dimen name="size_button_number">70dp</dimen>
+    <dimen name="key_text_size_vertical">40sp</dimen>
+    <dimen name="key_text_size_horizontal">20sp</dimen>
 </resources>
